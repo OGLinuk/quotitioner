@@ -11,10 +11,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getQuote() string {
+func getQuote() (string, error) {
 	f, err := os.Open("quotes.txt")
 	if err != nil {
-		log.Printf("main.go::getQuote::os.Open::ERROR: %s", err.Error())
+		return "", err
 	}
 	defer f.Close()
 
@@ -25,13 +25,20 @@ func getQuote() string {
 		quotes = append(quotes, bs.Text())
 	}
 
-	return quotes[rand.Intn(len(quotes))]
+	return quotes[rand.Intn(len(quotes))], nil
 }
 
 func indexHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"quote": getQuote(),
-	})
+	quote, err := getQuote()
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+	} else {
+		ctx.JSON(http.StatusOK, gin.H{
+			"quote": quote,
+		})
+	}
 }
 
 func main() {
