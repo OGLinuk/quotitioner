@@ -28,7 +28,7 @@ func getQuote() (string, error) {
 	return quotes[rand.Intn(len(quotes))], nil
 }
 
-func indexHandler(ctx *gin.Context) {
+func restHandler(ctx *gin.Context) {
 	quote, err := getQuote()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{
@@ -41,15 +41,25 @@ func indexHandler(ctx *gin.Context) {
 	}
 }
 
+func indexHandler(ctx *gin.Context) {
+	quote, err := getQuote()
+	if err != nil {
+		// http error
+	} else {
+		fmt.Fprintf(ctx.Writer, quote)
+	}
+}
+
 func main() {
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
-		PORT = "8080"
+		PORT = "12321"
 	}
 
 	g := gin.Default()
 
 	g.GET("/", indexHandler)
+	g.GET("/rest", restHandler)
 
 	if err := g.Run(fmt.Sprintf("0.0.0.0:%s", PORT)); err != nil {
 		log.Fatalf("Failed to start server: %s", err.Error())
