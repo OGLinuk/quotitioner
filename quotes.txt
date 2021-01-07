@@ -49,7 +49,7 @@
 "I can change almost anything, but I cant change human nature." ~ Dr. Manhattan
 "My name is Ozymandias, king of kings: Look on my works, ye Mighty, and despair!" ~ Ozymandias
 "All those moments will be lost in time, like tears in rain. Time to die." ~ Roy Batty
-"Nothing is the worst thing one could wish upon another, for the worst thing is a thing no more." ~
+"Nothing is the worst thing one could wish upon another, for the worst thing is a thing no more." ~ 
 "A dreadful plague in London was, in the year sixty-five, which swept an hundred thousand souls away; yet I alive." ~ Henry Foe
 "Howl howl gargle howl gargle howl howl howl gargle howl gargle howl howl gargle gargle howl gargle gargle gargle howl slurrp uuuurgh should have a good time." ~ Prostetnic Vogon Jeltz
 "Meanwhile, the poor Babel fish, by effectively removing all barriers to communication between different races and culture, has caused more and bloodier wars than anything else in the history of creation." ~ The Hitch Hikers Guide to the Galaxy
@@ -62,5 +62,9 @@
 "Its a sort of electronic sulking machine." ~ Arthur Dent
 "I spare not a single unit of thought on these cybernetic simpletons!" ~ Deep Thought
 "Forty-two." ~ Deep Thought
-"Thoughts are alive" ~
-"Thoughts should never be static, but polymorphic" ~
+"Thoughts are alive." ~ 
+"Thoughts should never be static, but polymorphic." ~ 
+"Glory, built on selfish principles, is shame and guilt." ~ Cowper
+"While we read history, we make history." ~ G. W. Curtis
+"You cannot make a crab walk straight." ~ Aristophanes
+"Apparently there is nothing that cannot happen." ~ Mark Twain

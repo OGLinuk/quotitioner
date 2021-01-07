@@ -7,11 +7,16 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
+// getQuote loads quotes and shuffles the list of quotes,
+// then returns a pseudo-random quote from the list.
 func getQuote() (string, error) {
+	// TODO: quotes.txt will eventually need to be compressed or hosted
+	// due to its size. Currently 7.5K (66 quotes).
 	f, err := os.Open("quotes.txt")
 	if err != nil {
 		return "", err
@@ -25,9 +30,14 @@ func getQuote() (string, error) {
 		quotes = append(quotes, bs.Text())
 	}
 
+	rand.Shuffle(len(quotes), func(i, j int) {
+		quotes[i], quotes[j] = quotes[j], quotes[i]
+	})
+
 	return quotes[rand.Intn(len(quotes))], nil
 }
 
+// restHandler calls and returns getQuote as JSON
 func restHandler(ctx *gin.Context) {
 	quote, err := getQuote()
 	if err != nil {
@@ -41,9 +51,11 @@ func restHandler(ctx *gin.Context) {
 	}
 }
 
+// indexHandler calls and returns getQuote as a raw string
 func indexHandler(ctx *gin.Context) {
 	quote, err := getQuote()
 	if err != nil {
+		// TODO: ...
 		// http error
 	} else {
 		fmt.Fprintf(ctx.Writer, quote)
@@ -51,9 +63,10 @@ func indexHandler(ctx *gin.Context) {
 }
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
-		PORT = "12321"
+		PORT = "9429"
 	}
 
 	g := gin.Default()

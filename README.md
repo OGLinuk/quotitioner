@@ -2,4 +2,4 @@
 title: Quotitioner
 ---
 
-A curated list of quotes, served over a REST API.
+A curated list of quotes, served as via webpage ("/") or a REST API ("/rest").
